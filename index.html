@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
-:root{--paper:#f5f0f2;--ink:#2e2a2c;--mute:#6f6569;--line:#e2d8dc;--sea:#d9cdd1}
+:root{--paper:#f1f4ec;--ink:#2e2a2c;--mute:#667060;--line:#dde4d3;--sea:#cfdac5}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;overflow:hidden}
 body{display:flex;height:100vh;height:100dvh;background:var(--paper);color:var(--ink);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -28,7 +28,7 @@ h1{font:600 27px/1.12 Fraunces,Georgia,serif;letter-spacing:-.01em;margin:0 0 10
 #pips{display:flex;gap:4px;margin:14px 0 4px}
 #pips i{flex:1;height:6px;border-radius:3px;background:var(--line);transition:background .4s}
 #prog{margin:0;color:var(--mute);font-size:12.5px}
-#status{margin:10px 0 0;padding:9px 12px;border-radius:10px;background:#faf7f8;border:1px solid var(--line);font-size:12.5px}
+#status{margin:10px 0 0;padding:9px 12px;border-radius:10px;background:#f8faf5;border:1px solid var(--line);font-size:12.5px}
 #status button{margin-top:6px}
 #about{margin:12px 0 0;font-size:13px;min-height:2.6em}
 #about b{font:600 15px Fraunces,Georgia,serif}
@@ -45,7 +45,7 @@ h2{margin:22px 0 4px;font:600 15px Fraunces,Georgia,serif}
 .empty{color:var(--mute);font-size:13px;margin:4px 8px}
 @keyframes rowIn{from{opacity:0;transform:translateX(-10px)}}
 
-select{width:100%;font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:#faf7f8;color:var(--ink)}
+select{width:100%;font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:#f8faf5;color:var(--ink)}
 .slider{display:block;margin-top:10px;color:var(--mute);font-size:13px}
 input[type=range]{width:100%;accent-color:var(--ink);margin:2px 0 0}
 .note{margin:14px 0 0;color:var(--mute);font-size:12px}
@@ -53,7 +53,7 @@ input[type=range]{width:100%;accent-color:var(--ink);margin:2px 0 0}
 
 .leaflet-tile-pane{filter:url(#rose)}
 .leaflet-bar a{background:var(--paper);color:var(--ink);border-color:var(--line)}
-.leaflet-control-attribution{background:rgba(245,240,242,.78)!important;color:var(--mute)!important;font-size:10.5px}
+.leaflet-control-attribution{background:rgba(241,244,236,.78)!important;color:var(--mute)!important;font-size:10.5px}
 .leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--paper);color:var(--ink);box-shadow:0 6px 24px rgba(46,42,44,.3)}
 .leaflet-popup-content-wrapper{border-radius:14px}
 .leaflet-popup-content{margin:13px 16px}
@@ -86,11 +86,11 @@ path.h-fine{fill:url(#h-fine)}
     <pattern id="h-cross" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 0L8 8M8 0L0 8" stroke="#7b4b2f" stroke-width="1.5"/></pattern>
     <pattern id="h-fine" width="4.5" height="4.5" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="4.5" stroke="#2e2a2c" stroke-width="1.6"/></pattern>
   </defs>
-  <!-- Turns any tile image into a pinkish-grey duotone: grey first, then contrast, then a charcoal-to-mist colour ramp -->
+  <!-- Turns any tile image into a sage-green duotone: grey first, then contrast, then a charcoal-to-mist colour ramp -->
   <filter id="rose" color-interpolation-filters="sRGB">
     <feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0"/>
     <feComponentTransfer id="rose-contrast"><feFuncR type="linear" slope="1.2" intercept="-0.1"/><feFuncG type="linear" slope="1.2" intercept="-0.1"/><feFuncB type="linear" slope="1.2" intercept="-0.1"/></feComponentTransfer>
-    <feComponentTransfer><feFuncR type="table" tableValues="0.24 0.74 0.94"/><feFuncG type="table" tableValues="0.20 0.66 0.89"/><feFuncB type="table" tableValues="0.23 0.69 0.90"/></feComponentTransfer>
+    <feComponentTransfer><feFuncR type="table" tableValues="0.20 0.68 0.91"/><feFuncG type="table" tableValues="0.26 0.76 0.94"/><feFuncB type="table" tableValues="0.20 0.62 0.84"/></feComponentTransfer>
   </filter>
 </svg>
 
@@ -128,7 +128,7 @@ path.h-fine{fill:url(#h-fine)}
 
 const TAU = Math.PI*2;
 // Sober palette: charcoal, slate, olive, umber, oxblood and stone
-const C = {char:"#2e2a2c",slate:"#46606b",olive:"#666b43",umber:"#7b4b2f",ox:"#6a2b34",stone:"#6d6560",paper:"#f5f0f2"};
+const C = {char:"#2e2a2c",slate:"#46606b",olive:"#666b43",umber:"#7b4b2f",ox:"#6a2b34",stone:"#6d6560",paper:"#f1f4ec"};
 const $ = id => document.getElementById(id);
 const DATA = JSON.parse($("layer-data").textContent);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -222,7 +222,6 @@ const LAYERS = [
 
 /* ---------- Map: pink, text-free landscape ---------- */
 const LAND = {
-  "Terrain (Esri)":["https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}",{maxNativeZoom:13,maxZoom:15,attribution:"Tiles © Esri, USGS, NOAA"}],
   "Shaded relief (Esri)":["https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}",{maxNativeZoom:13,maxZoom:15,attribution:"Tiles © Esri"}],
   "Soft relief (NASA)":["https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg",{maxNativeZoom:8,maxZoom:15,attribution:"Imagery © NASA GIBS"}]
 };
